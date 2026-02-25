@@ -35,7 +35,7 @@ export default function Column({ column, setColumns }: ColumnProps) {
 
   return (
     <div className="column">
-      <div className={`column-header ${column?.id === "todo" ? "todo" : column?.id === "progress" ? "progress" : "done"}`}>
+      <div className={`column-header ${column?.id}`}>
         <h3>{column.title}</h3>
         <div className="column-header-count"><p>{column?.cards?.length || 0}</p></div>
       </div>

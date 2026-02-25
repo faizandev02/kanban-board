@@ -20,6 +20,14 @@
   max-height: 100%;
   overflow: hidden;
 }
+.card-left-indicator  {
+  width: 3px;
+  height: calc(100% - 24px);
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+}
 .card-content-wrapper {
    display: flex;
   flex-direction: column;
@@ -33,13 +41,13 @@
   align-items: center;
   padding: 16px
 }
-.column-header.todo{
+.column-header.todo, .card-left-indicator.todo{
   background-color: #0091f1;
 }
-.column-header.progress{
+.column-header.progress, .card-left-indicator.progress{
   background-color: #fa9600;
 }
-.column-header.done{
+.column-header.done, .card-left-indicator.done{
   background-color: #00c388;
 }
 
@@ -98,7 +106,7 @@
 
 .card {
   background: var(--card-bg);
-  padding: 12px;
+  padding: 12px 12px 12px 16px;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-color);
@@ -107,6 +115,7 @@
   flex-direction: column;
   gap: 8px;
   cursor: default;
+  position: relative;
 }
 
 .card:hover {

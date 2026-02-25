@@ -13,16 +13,26 @@ import {
   defaultDropAnimationSideEffects,
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CardType, ColumnType } from "./types";
 import { initialData } from "./dummyData";
 import Column from "./Column";
 import Card from "./Card";
 import "./styles.css";
 
+const KANBAN_BOARD_LS_KEY = "kanban-board-data";
+
 export default function KanbanBoard() {
-  const [columns, setColumns] = useState<ColumnType[]>(initialData);
   const [activeCard, setActiveCard] = useState<CardType | null>(null);
+  const [columns, setColumns] = useState<ColumnType[]>(() => {
+    const savedData = localStorage.getItem(KANBAN_BOARD_LS_KEY);
+    return savedData ? JSON.parse(savedData) : initialData;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(KANBAN_BOARD_LS_KEY, JSON.stringify(columns));
+  }, [columns]);
+
 
   const sensors = useSensors(
     useSensor(MouseSensor, {

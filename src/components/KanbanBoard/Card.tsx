@@ -69,6 +69,7 @@ export default function Card({ card, columnId, setColumns, isOverlay }: CardProp
       {...attributes}
       className={`card ${isOverlay ? "is-overlay" : ""} ${isDragging ? "is-dragging" : ""}`}
     >
+      <div className={`card-left-indicator ${columnId}`}></div>
       <div className="card-header">
         {!editing && (
           <div className="drag-handle" {...listeners}>
